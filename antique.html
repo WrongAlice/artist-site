@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Collected Curiosities — ghost flower</title>
+  <meta
+    name="description"
+    content="Antique finds, curious objects, and little pieces of history."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Your existing website styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Styles just for this page -->
+  <style>
+    .site-header {
+      min-height: 102px;
+      height: auto;
+      gap: 24px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .site-header nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(16px, 2vw, 34px);
+    }
+
+    .site-header nav a[aria-current="page"] {
+      color: var(--rust);
+      border-bottom: 1px solid var(--rust);
+    }
+
+    .antiques-intro {
+      min-height: 540px;
+    }
+
+    .antiques-intro .intro-mark {
+      transform: none;
+      font-size: 55px;
+    }
+
+    .antiques-intro h1 {
+      font-size: clamp(3.5rem, 7.3vw, 7.4rem);
+    }
+
+    .collection-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 45px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .collection-heading .eyebrow {
+      margin: 0;
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .collection-heading > p {
+      margin: 0;
+      color: #695e55;
+      font-family: "Italiana", Georgia, serif;
+      font-size: 1.3rem;
+    }
+
+    .antique-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(24px, 3.5vw, 56px);
+      align-items: start;
+    }
+
+    .antique:nth-child(3n + 2) {
+      margin-top: 80px;
+    }
+
+    .antique:nth-child(3n) {
+      margin-top: 30px;
+    }
+
+    .antique-photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      margin: 0 0 24px;
+      background: #c5aa91;
+      overflow: hidden;
+    }
+
+    .antique:nth-child(3n + 2) .antique-photo {
+      background: #9baca7;
+    }
+
+    .antique:nth-child(3n) .antique-photo {
+      background: #c9b8b4;
+    }
+
+    .photo-placeholder {
+      position: absolute;
+      inset: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border: 1px solid #695e5570;
+      text-align: center;
+      color: #463c33;
+    }
+
+    .photo-placeholder span {
+      font-family: Georgia, serif;
+      font-size: 64px;
+    }
+
+    .photo-placeholder p {
+      margin: 0;
+      font-family: "Italiana", Georgia, serif;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .photo-placeholder small {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+    }
+
+    .antique-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .object-number {
+      margin: 0 0 10px;
+      color: #695e55;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+    }
+
+    .antique h3 {
+      margin: 0 0 15px;
+      font-family: "Italiana", Georgia, serif;
+      font-size: clamp(2rem, 2.7vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.12;
+    }
+
+    .object-description,
+    .antique details p {
+      color: #695e55;
+      font-size: 0.94rem;
+    }
+
+    .antique details {
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .antique summary {
+      cursor: pointer;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .antique summary:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 5px;
+    }
+
+    .collectors-note {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 10%;
+      background: #e9e6db;
+    }
+
+    .collectors-note h2 {
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+    }
+
+    .collectors-note .text-link {
+      display: inline-block;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 1000px) {
+      .site-header {
+        grid-template-columns: 1fr auto;
+      }
+
+      .site-header nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        padding-bottom: 16px;
+      }
+
+      .header-link {
+        grid-column: 2;
+        grid-row: 1;
+      }
+    }
+
+    @media (max-width: 750px) {
+      .antique-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .antique:nth-child(n) {
+        margin-top: 0;
+      }
+
+      .antique-photo {
+        max-width: 480px;
+        margin-inline: auto;
+      }
+
+      .collection-heading,
+      .collectors-note {
+        display: block;
+      }
+
+      .collection-heading > p {
+        margin-top: 12px;
+      }
+
+      .collectors-note h2 {
+        margin-bottom: 28px;
+      }
+
+      .antiques-intro {
+        min-height: 470px;
+      }
+
+      .antiques-intro h1 {
+        font-size: clamp(3rem, 12vw, 5rem);
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a
+      class="wordmark"
+      href="index.html"
+      aria-label="ghost flower, home"
+    >
+      ghost flower
+      <span class="wordmark-small">ART &amp; OBJECTS</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html#work">Work</a>
+      <a href="antiques.html" aria-current="page">Antiques</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a class="header-link" href="index.html#contact">
+      INQUIRE <span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
+  <main id="main">
+    <section
+      class="intro antiques-intro"
+      aria-labelledby="intro-title"
+    >
+      <div class="intro-mark" aria-hidden="true">⁂ ♡ ⁂</div>
+
+      <p class="eyebrow">AN ARTIST’S COLLECTING NOTEBOOK</p>
+
+      <h1 id="intro-title">
+        Collected<br>
+        <em>curiosities.</em>
+      </h1>
+
+      <p class="intro-copy">
+        Old things, odd details, and objects with a little mystery.
+        A place for the pieces that make me stop and look closer.
+      </p>
+
+      <a class="text-link" href="#finds">
+        Take a closer look <span aria-hidden="true">↘</span>
+      </a>
+    </section>
+
+    <section
+      class="work section-pad"
+      id="finds"
+      aria-labelledby="finds-title"
+    >
+      <div class="collection-heading">
+        <h2 class="eyebrow" id="finds-title">
+          01 / THINGS THAT CATCH MY EYE
+        </h2>
+        <p>A few objects. Plenty of stories.</p>
+      </div>
+
+      <div class="antique-grid">
+
+        <!-- ITEM ONE: Replace this example with your own item. -->
+        <article class="antique">
+          <div class="antique-photo">
+            <!-- Replace this placeholder with an img tag. -->
+            <div class="photo-placeholder">
+              <span aria-hidden="true">❧</span>
+              <p>Woven<br>histories</p>
+              <small>PHOTOGRAPH TO COME</small>
+            </div>
+          </div>
+
+          <p class="object-number">NO. 01 / TEXTILES</p>
+          <h3>Woven coverlets</h3>
+
+          <p class="object-description">
+            Rhythmic patterns, softened colors, and tiny
+            irregularities left by a maker’s hand.
+            Textiles that invite a closer look.
+          </p>
+
+          <details>
+            <summary>Details worth noticing</summary>
+            <p>
+              The weave, the edges, the reverse, and any woven
+              names or dates. Each detail offers another
+              question to follow.
+            </p>
+          </details>
+        </article>
+
+        <!-- ITEM TWO -->
+        <article class="antique">
+          <div class="antique-photo">
+            <div class="photo-placeholder">
+              <span aria-hidden="true">✧</span>
+              <p>A maker’s<br>mark</p>
+              <small>PHOTOGRAPH TO COME</small>
+            </div>
+          </div>
+
+          <p class="object-number">NO. 02 / FOLK ART</p>
+          <h3>Carved &amp; curious</h3>
+
+          <p class="object-description">
+            A peculiar little animal, a painted surface,
+            a shape that feels wonderfully imperfect.
+            Objects full of their maker’s personality.
+          </p>
+
+          <details>
+            <summary>Details worth noticing</summary>
+            <p>
+              Tool marks, traces of paint, and the way a figure
+              balances on its base. Sometimes the smallest
+              gesture gives an object its character.
+            </p>
+          </details>
+        </article>
+
+        <!-- ITEM THREE -->
+        <article class="antique">
+          <div class="antique-photo">
+            <div class="photo-placeholder">
+              <span aria-hidden="true">❦</span>
+              <p>Everyday<br>wonders</p>
+              <small>PHOTOGRAPH TO COME</small>
+            </div>
+          </div>
+
+          <p class="object-number">NO. 03 / EVERYDAY OBJECTS</p>
+          <h3>Beautifully useful</h3>
+
+          <p class="object-description">
+            The quiet appeal of an old pitcher, a small wooden
+            box, or a well-worn frame. Familiar things with
+            unexpectedly lovely details.
+          </p>
+
+          <details>
+            <summary>Details worth noticing</summary>
+            <p>
+              A handle worn smooth, an unusual hinge, a stamp
+              underneath. Small clues to how something was
+              made and how it may have been used.
+            </p>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <section
+      class="collectors-note section-pad"
+      aria-labelledby="note-title"
+    >
+      <div>
+        <p class="eyebrow">02 / A NOTE ON COLLECTING</p>
+        <h2 id="note-title">
+          A little worn.<br>
+          <em>A little wonderful.</em>
+        </h2>
+      </div>
+
+      <div>
+        <p>
+          I’m drawn to the things that carry traces of another
+          life: a faded pattern, an unexpected shape, a detail
+          someone took the time to make by hand.
+        </p>
+        <p>
+          This notebook is a place to follow that curiosity,
+          gather inspiration, and share what catches my eye.
+        </p>
+        <a class="text-link" href="index.html#contact">
+          Share a curious find <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>
+      © <span id="year">2026</span> N. Pizzano web design
+    </span>
+    <span>MADE WITH CURIOSITY ✳</span>
+    <a href="#top">BACK TO TOP ↑</a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
