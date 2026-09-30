@@ -4,20 +4,7 @@
   overflow: hidden;
 }
 
-.antique-photo img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}.antique-photo {
-  overflow: hidden;
-}
 
-.antique-photo a {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
 
 .antique-photo img {
   width: 100%;
